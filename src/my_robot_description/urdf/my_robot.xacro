@@ -1,0 +1,144 @@
+<?xml version="1.0" ?>
+<robot name="my_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+<xacro:include filename="$(find my_robot_description)/urdf/my_robot.trans" />
+<xacro:include filename="$(find my_robot_description)/urdf/my_robot.gazebo" />
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="-0.005886938967818599 6.428701789423718e-17 0.05577666259264441" rpy="0 0 0"/>
+    <mass value="3.5991007159747865"/>
+    <inertia ixx="0.012564" iyy="0.026721" izz="0.035946" ixy="0.0" iyz="0.0" ixz="0.000918"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_robot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_robot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+<gazebo reference="base_link">
+  <material>Gazebo/gray</material>
+</gazebo>
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="-1.8082757513582237e-14 -0.012499999999999983 0.0" rpy="0 0 0"/>
+    <mass value="0.17799934197303033"/>
+    <inertia ixx="0.000123" iyy="0.000227" izz="0.000123" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.1 0.11 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_robot_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="0.1 0.11 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_robot_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+<gazebo reference="right_wheel_1">
+  <material>Gazebo/Black</material>
+</gazebo>
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="-1.8082757513582237e-14 0.012499999999999942 0.0" rpy="0 0 0"/>
+    <mass value="0.17799934197303033"/>
+    <inertia ixx="0.000123" iyy="0.000227" izz="0.000123" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.1 -0.11 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_robot_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="0.1 -0.11 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_robot_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+<gazebo reference="left_wheel_1">
+  <material>Gazebo/Black</material>
+</gazebo>
+<link name="caster_1">
+  <inertial>
+    <origin xyz="-0.05000000000000002 1.7370069300366088e-17 -0.009374999999999998" rpy="0 0 0"/>
+    <mass value="0.25689064927791533"/>
+    <inertia ixx="4.2e-05" iyy="4.2e-05" izz="6.4e-05" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.15 -0.0 -0.025" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_robot_description/meshes/caster_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="-0.15 -0.0 -0.025" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_robot_description/meshes/caster_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+<gazebo reference="caster_1">
+  <material>Gazebo/grey</material>
+</gazebo>
+<link name="lidar_1">
+  <inertial>
+    <origin xyz="-3.469446951953614e-17 2.3616681577656137e-17 0.01271329027872195" rpy="0 0 0"/>
+    <mass value="1.5115445803512537"/>
+    <inertia ixx="0.001005" iyy="0.001005" izz="0.001857" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.05 -0.0 -0.125" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_robot_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="0.05 -0.0 -0.125" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_robot_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+<gazebo reference="lidar_1">
+  <material>Gazebo/Black</material>
+</gazebo>
+<joint name="Revolute_1" type="continuous">
+  <origin xyz="-0.1 -0.11 0.05" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Revolute_2" type="continuous">
+  <origin xyz="-0.1 0.11 0.05" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rigid_3" type="fixed">
+  <origin xyz="0.15 0.0 0.025" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="caster_1"/>
+</joint>
+
+<joint name="Rigid_4" type="fixed">
+  <origin xyz="-0.05 0.0 0.125" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="lidar_1"/>
+</joint>
+
+</robot>
